@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <main>
+    <label>
+      Namn:
+      <input type="text" id="name">
+    </label><br>
+    <label>
+      Ålder:
+      <input type="number" id="age">
+    </label><br>
+    <label>
+      Elområde:
+      <select id="electricityArea">
+        <option selected disabled>Välj elområde</option>
+        <option value="area1">Elområde 1</option>
+        <option value="area2">Elområde 2</option>
+        <option value="area3">Elområde 3</option>
+        <option value="area4">Elområde 4</option>
+      </select>
+    </label><br>
+    <button id="generate" disabled>Generera</button>
+
+    <p id="priceText"></p>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
