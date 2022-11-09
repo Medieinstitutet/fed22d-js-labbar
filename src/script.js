@@ -3,6 +3,7 @@ const generateButton = document.querySelector('#generate');
 const nameField = document.querySelector('#name');
 const ageField = document.querySelector('#age');
 const electricityArea = document.querySelector('#electricityArea');
+const priceTextField = document.querySelector('#priceText');
 
 // Keep track if fields have correct values
 let nameIsOk = false;
@@ -18,11 +19,8 @@ electricityArea.addEventListener('change', checkElectricityArea);
  * Check that we have selected an electricity area.
  */
 function checkElectricityArea() {
-  if (electricityArea.value !== '') {
-    electricityIsOk = true;
-  } else {
-    electricityIsOk = false;
-  }
+  // Vi kan konvertera en if-sats-jämförelse direkt till en boolsk variabel
+  electricityIsOk = electricityArea.value !== '';
   activateGenerateButton();
 }
 
@@ -31,11 +29,7 @@ function checkElectricityArea() {
  * that they're legally OK to sign contracts.
  */
 function checkAge() {
-  if (ageField.value >= 18) {
-    ageIsOk = true;
-  } else {
-    ageIsOk = false;
-  }
+  ageIsOk = ageField.value >= 18;
   activateGenerateButton();
 }
 
@@ -44,12 +38,7 @@ function checkAge() {
  * // TODO: Find better RegEx/pattern to verify the name
  */
 function checkName() {
-  // jenni - 0: j, 1: e, 2: n
-  if (nameField.value.indexOf(' ') > -1) { // kolla att det finns mellanslag i namnet
-    nameIsOk = true;
-  } else {
-    nameIsOk = false;
-  }
+  nameIsOk = nameField.value.indexOf(' ') > -1;
   activateGenerateButton();
 }
 
@@ -65,6 +54,7 @@ function activateGenerateButton() {
   } else {
     generateButton.setAttribute('disabled', '');
     generateButton.removeEventListener('click', printPrice);
+    priceTexField.textContent = '';
   }
 }
 
@@ -72,8 +62,6 @@ function activateGenerateButton() {
  * Let the user know their price.
  */
 function printPrice() {
-  const priceTextField = document.querySelector('#priceText');
-
   if (electricityArea.value === 'area1') {
     priceTextField.textContent = 'Ditt pris är ⚡.';
   } else if(electricityArea.value === 'area2' || electricityArea.value === 'area3') {
@@ -81,20 +69,4 @@ function printPrice() {
   } else {
     priceTextField.textContent = 'Ditt pris är ⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡.';
   }
-
-  // We could also use switch/case if we want, instead of the if statements
-  /*switch(electricityArea.value) {
-    case 'area1':
-      priceTextField.innerHTML = 'Ditt pris är ⚡.';
-      break;
-    case 'area2':
-    case 'area3':
-      priceTextField.innerHTML = 'Ditt pris är ⚡⚡⚡⚡.';
-      break;
-    case 'area4':
-      priceTextField.innerHTML = 'Ditt pris är ⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡.';
-      break;
-    default:
-      priceTextField.innerHTML = 'Vi kan inte leverera el till dig.';
-  }*/
 }
