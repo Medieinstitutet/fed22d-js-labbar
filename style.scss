@@ -11,3 +11,27 @@ body.theme-1 {
 body.theme-0 {
   background-color: rgb(231, 0, 77);
 }
+
+.portfolio {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+#portfolioContainer {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.green {
+  background: green;
+}
+
+.orange {
+  background: orange;
+}

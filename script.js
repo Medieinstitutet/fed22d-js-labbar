@@ -1,48 +1,28 @@
-const themeToggleBtn = document.querySelector('#themeToggle');
+const contentBtn1 = document.querySelector('#content1');
+const contentBtn2 = document.querySelector('#content2');
+const contentBtn3 = document.querySelector('#content3');
 
-themeToggleBtn.addEventListener('click', switchTheme);
+contentBtn1.addEventListener('click', showContent1);
+contentBtn2.addEventListener('click', showContent2);
+contentBtn3.addEventListener('click', showContent3);
 
-let themeId = 0;
-let previousClass = 'theme-0';
-
-// var är old school, let är det nya coola
-
-function switchTheme() {
-  themeId++;
-  if (themeId > 2) {
-    themeId = 0;
-  }
-  document.body.classList.remove(previousClass);
-  switch(themeId) {
-    case 0:
-      document.body.classList.add('theme-0');
-      previousClass = 'theme-0';
-      break;
-    case 1:
-      document.body.classList.add('theme-1');
-      previousClass = 'theme-1';
-      break;
-    case 2:
-      document.body.classList.add('theme-2');
-      previousClass = 'theme-2';
-      break;
-  }
+function showContent1() {
+  document.querySelector('#portfolioContainer').classList.add('orange');
+  document.querySelector('#portfolio1').classList.add('visible');
+  document.querySelector('#portfolio2').classList.remove('visible');
+  document.querySelector('#portfolio3').classList.remove('visible');
 }
 
-/*
-- [x] skapa en knapp som växlar tema när vi trycker på den
-- [x] en boolean för att hålla reda på vilket färgtema vi befinner oss i
-
-- [] när vi trycker på knappen, anropa en funktion som kollar
-  - [] vilket tema har vi just nu
-  - [] ändra klass på body-elementet beroende på det
-
-if (colorChange) {
-  // ta bort mörk klass
-} else {
-  // lägg på mörk klass
+function showContent2() {
+  document.querySelector('#portfolioContainer').classList.add('yellow');
+  document.querySelector('#portfolio1').classList.remove('visible');
+  document.querySelector('#portfolio2').classList.add('visible');
+  document.querySelector('#portfolio3').classList.remove('visible');
 }
 
-- [] Använd classList
-
-*/
+function showContent3() {
+  document.querySelector('#portfolioContainer').classList.add('green');
+  document.querySelector('#portfolio1').classList.remove('visible');
+  document.querySelector('#portfolio2').classList.remove('visible');
+  document.querySelector('#portfolio3').classList.add('visible');
+}
