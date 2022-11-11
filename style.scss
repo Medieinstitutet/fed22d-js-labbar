@@ -2,10 +2,8 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
-body.dark {
-  background-color: rgb(74, 74, 74);
-}
+@import 'dark_theme';
 
-body.light {
+body {
   background-color: rgb(235, 243, 125);
 }

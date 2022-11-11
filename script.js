@@ -4,26 +4,8 @@ themeToggleBtn.addEventListener('click', switchTheme);
 
 // var är old school, let är det nya coola
 
-let isLightTheme = true;
-
 function switchTheme() {
-  isLightTheme = !isLightTheme;
-
-  if (isLightTheme) {
-    document.body.classList.remove('dark');
-    document.body.classList.add('light');
-  } else {
-    document.body.classList.remove('light');
-    document.body.classList.add('dark');
-  }
-
-  console.log(isLightTheme);
-  /*
-  if (colorChange === true) {
-    colorChange = false;
-  } else {
-    colorChange = true;
-  }*/
+  document.body.classList.toggle('dark');
 }
 
 /*
