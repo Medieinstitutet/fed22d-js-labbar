@@ -1,5 +1,4 @@
 # FED22D - JavaScript Grundkurs
-Här hittar du labbar & kodexempel från lektionerna.
+I denna labb, använd "commits"-vyn för att se de olika delarna, denna labb utvecklades till någonting helt annat än det vi höll på med från början:
 
-Använd "branches"-dropdownen för att navigera till rätt lektion:
-![Bild på branches-menyn](assets/readme-screenshot.jpg)
+https://github.com/Medieinstitutet/fed22d-js-labbar/commits/labb2-theme-toggle
