@@ -2,10 +2,31 @@ const themeToggleBtn = document.querySelector('#themeToggle');
 
 themeToggleBtn.addEventListener('click', switchTheme);
 
+let themeId = 0;
+let previousClass = 'theme-0';
+
 // var är old school, let är det nya coola
 
 function switchTheme() {
-  document.body.classList.toggle('dark');
+  themeId++;
+  if (themeId > 2) {
+    themeId = 0;
+  }
+  document.body.classList.remove(previousClass);
+  switch(themeId) {
+    case 0:
+      document.body.classList.add('theme-0');
+      previousClass = 'theme-0';
+      break;
+    case 1:
+      document.body.classList.add('theme-1');
+      previousClass = 'theme-1';
+      break;
+    case 2:
+      document.body.classList.add('theme-2');
+      previousClass = 'theme-2';
+      break;
+  }
 }
 
 /*

@@ -4,6 +4,10 @@ body {
 
 @import 'dark_theme';
 
-body {
+body.theme-1 {
   background-color: rgb(235, 243, 125);
+}
+
+body.theme-0 {
+  background-color: rgb(231, 0, 77);
 }
