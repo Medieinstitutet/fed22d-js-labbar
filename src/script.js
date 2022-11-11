@@ -54,7 +54,7 @@ function activateGenerateButton() {
   } else {
     generateButton.setAttribute('disabled', '');
     generateButton.removeEventListener('click', printPrice);
-    priceTexField.textContent = '';
+    priceTextField.textContent = '';
   }
 }
 
