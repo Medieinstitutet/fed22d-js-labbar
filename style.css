@@ -1,0 +1,11 @@
+body {
+  transition: background-color 0.3s ease-in-out;
+}
+
+body.dark {
+  background-color: rgb(74, 74, 74);
+}
+
+body.light {
+  background-color: rgb(235, 243, 125);
+}
