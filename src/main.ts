@@ -7,6 +7,8 @@ const board: HTMLDivElement | null = document.querySelector('#gameboard');
 const player: HTMLDivElement | null = document.querySelector('#player');
 const ball: HTMLDivElement | null = document.querySelector('#ball');
 
+const playerMoveSpeed = 1;
+
 let boardWidth = 0;
 let boardHeight = 0;
 let playerWidth = 0;
@@ -18,6 +20,10 @@ const ballDirection = {
 };
 const ballSize = 15;
 const playerHeight = 20;
+
+// TODO: Game Countdown
+// TODO: Timer/points
+// TODO: Death/lives
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------ FUNCTIONS -------------------------------
@@ -33,7 +39,7 @@ function movePlayer(e: KeyboardEvent): void {
     if (posX >= boardWidth - playerWidth) {
       posX = boardWidth - playerWidth;
     }
-    gsap.to(player, { x: posX });
+    gsap.to(player, { x: posX, ease: 'none', duration: playerMoveSpeed / 10 });
   }
 
   if (e.key === 'ArrowLeft') {
@@ -41,13 +47,24 @@ function movePlayer(e: KeyboardEvent): void {
     if (posX <= 0) {
       posX = 0;
     }
-    gsap.to(player, { x: posX });
+    gsap.to(player, { x: posX, ease: 'none', duration: playerMoveSpeed / 10 });
   }
 
 }
 
+function gameOver() {
+  gsap.killTweensOf(ball);
+
+  // TODO: Game Over screen
+}
+
 function checkHit() {
-  const bricksLeft = document.querySelectorAll('.brick');
+  const bricksLeft = document.querySelectorAll('.brick:not(.hit)');
+
+  if (bricksLeft.length === 0) {
+    gameOver();
+  }
+
   bricksLeft.forEach((brickElement) => {
     if (Draggable.hitTest(ball, brickElement)) {
       brickElement.classList.add('hit');
@@ -59,10 +76,10 @@ function newBallDirection() {
   ballDirection.angleY *= -1;
 
   const randomXPos = randomInRange(0, boardWidth);
-  let targetY = boardHeight - ballSize - playerHeight;
+  let targetY = boardHeight - ballSize;
 
   if (ballDirection.angleY === -1) {
-    targetY = document.body.getBoundingClientRect().top;
+    targetY = 0;
   }
   gsap.to(ball, { 
     x: randomXPos, 
