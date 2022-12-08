@@ -6,6 +6,7 @@ const player: HTMLDivElement | null = document.querySelector('#player');
 let boardWidth = 0;
 let playerWidth = 0;
 let posX = 0;
+let windowResizeTimer: number | undefined = undefined;
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------ FUNCTIONS -------------------------------
@@ -30,11 +31,23 @@ function movePlayer(e: KeyboardEvent): void {
 
 }
 
+function waitForResizeToEnd() {
+  clearTimeout(windowResizeTimer);
+  windowResizeTimer = setTimeout(init, 700, true);
+}
 // ------------------------------------------------------------------------------------
 // ------------------------------------------ INIT ------------------------------------
 // ------------------------------------------------------------------------------------
-if (player !== null && board !== null) {
-  window.addEventListener('keydown', movePlayer);
-  boardWidth = board?.getBoundingClientRect().width;
-  playerWidth = player.getBoundingClientRect().width;
+function init(resizeEvent = false): void {
+  if (player !== null && board !== null) {
+    boardWidth = board?.getBoundingClientRect().width;
+    playerWidth = player.getBoundingClientRect().width;
+
+    if (!resizeEvent) {
+      window.addEventListener('keydown', movePlayer);
+    }
+  }
 }
+
+init();
+window.addEventListener('resize', waitForResizeToEnd);
