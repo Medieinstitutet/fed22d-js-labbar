@@ -47,9 +47,12 @@ function movePlayer(e: KeyboardEvent): void {
 }
 
 function checkHit() {
-  if (Draggable.hitTest('#ball', '.brick')) {
-    console.log('hit!');
-  }
+  const bricksLeft = document.querySelectorAll('.brick');
+  bricksLeft.forEach((brickElement) => {
+    if (Draggable.hitTest(ball, brickElement)) {
+      brickElement.classList.add('hit');
+    }
+  });
 }
 
 function newBallDirection() {
@@ -90,6 +93,26 @@ function waitForResizeToEnd() {
   clearTimeout(windowResizeTimer);
   windowResizeTimer = setTimeout(init, 700, true);
 }
+
+function createBricks(rows = 5, columns = 10) {
+  const brickWidth = 100 / columns;
+
+  const brickContainer: HTMLDivElement | null = document.querySelector('#brickContainer');
+
+  if (brickContainer !== null ) {
+    const brickGap = getComputedStyle(brickContainer).gap;
+
+    for (let row = 0; row < rows; row++) {
+      for (let column = 0; column < columns; column++) {
+        brickContainer.innerHTML += `
+          <div class="brick" style="width: calc(${brickWidth}% - ${brickGap})"></div>
+        `;
+      }
+    }
+  }
+
+}
+
 // ------------------------------------------------------------------------------------
 // ------------------------------------------ INIT ------------------------------------
 // ------------------------------------------------------------------------------------
@@ -103,6 +126,7 @@ function init(resizeEvent = false): void {
 
     if (!resizeEvent) {
       window.addEventListener('keydown', movePlayer);
+      createBricks();
     }
 
     startBall();
