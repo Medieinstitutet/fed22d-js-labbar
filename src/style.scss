@@ -36,6 +36,23 @@
   bottom: 0;
 }
 
+.brick {
+  width: 25%;
+  height: 40px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ball {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+}
+
 body {
   margin: 0;
   place-items: center;
