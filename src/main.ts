@@ -15,7 +15,8 @@ let playerWidth = 0;
 let posX = 0;
 let windowResizeTimer: number | undefined = undefined;
 const ballDirection = {
-  angleY: 1,
+  angleY: -1,
+  angleX: 1,
   speed: 2,
 };
 const ballSize = 15;
@@ -150,5 +151,24 @@ function init(resizeEvent = false): void {
   }
 }
 
-init();
-window.addEventListener('resize', waitForResizeToEnd);
+// init();
+// window.addEventListener('resize', waitForResizeToEnd);
+
+console.time('anon');
+for (let i = 0; i < 100000; i++) {
+  const item = {};
+  item.delete = function() {
+    console.log('delete me');
+  };
+}
+console.timeEnd('anon');
+
+console.time('non-anon');
+function deleteMe() {
+  console.log('delete me');
+}
+for (let i = 0; i < 100000; i++) {
+  const item = {};
+  item.delete = deleteMe;
+}
+console.timeEnd('non-anon');
