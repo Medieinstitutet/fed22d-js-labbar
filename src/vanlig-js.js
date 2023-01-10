@@ -1,0 +1,1 @@
+console.log('jag kommer från vanliga js:en!');
