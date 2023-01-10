@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import ButtonCompositionApi from './ButtonCompositionApi.vue';
+import ButtonOptionsApi from './ButtonOptionsApi.vue';
 
 const showMenu = ref(false);
 
@@ -10,21 +11,25 @@ function toggleMenu(isMenuOpen) {
 </script>
 
 <template>
-  <header>
+  <header :class="{ 'headerIsOpen': showMenu }">
     <nav>
       <ul v-if="showMenu"> <!-- display: none; -->
         <li>Hem</li>
         <li>Om oss</li>
         <li>Kontakt</li>
       </ul>
+      <ButtonOptionsApi @button-click="toggleMenu" />
       <ButtonCompositionApi @button-click="toggleMenu" />
     </nav>
   </header>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
   background-color: yellow;
+  &.headerIsOpen {
+    background-color: green;
+  }
 }
 nav {
   display: flex;

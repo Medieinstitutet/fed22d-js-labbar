@@ -12,11 +12,16 @@ function handleButtonClick() {
   // är öppen eller stängd (menuIsOpen.value)
   emit('buttonClick', menuIsOpen.value);
 
-  /*if (menuIsOpen.value === true) {
+  // Detta 👇
+  // menuIsOpen.value = !menuIsOpen.value;
+  // är "kortkod" för nedan if-sats 👇
+  /*
+  if (menuIsOpen.value === true) {
     menuIsOpen.value = false;
   } else {
     menuIsOpen.value = true;
-  }*/
+  }
+  */
 }
 </script>
 
